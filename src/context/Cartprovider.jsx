@@ -9,6 +9,27 @@ const cartReducer = (cart, action) => {
 
     return cart.filter((item) => item.id !== action.payload);
   }
+  if (action.type === "add-qty") {
+    console.log(cart, "CARTTT");
+    console.log(action.payload, "PAPAP");
+
+    return cart.map((item) => {
+      if (item.id === action.payload) {
+        return { ...item, quantity: item.quantity + 1 };
+      } else {
+        return item;
+      }
+    });
+  }
+  if (action.type === "remove-qty") {
+    return cart.map((item) => {
+      if (item.id === action.payload) {
+        return { ...item, quantity: item.quantity - 1 };
+      } else {
+        return item;
+      }
+    });
+  }
 };
 
 export const CartContext = createContext();

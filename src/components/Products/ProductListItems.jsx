@@ -12,6 +12,7 @@ const ProductListItems = ({ product }) => {
         title: product.title,
         price: product.price,
         thumbnail: product.thumbnail,
+        quantity: 1,
       };
       dispatch({
         type: "add-to-cart",
